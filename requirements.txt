@@ -1,0 +1,14 @@
+Flask
+speechrecognition
+transformers
+torch
+moviepy
+Pillow
+werkzeug
+gTTS
+pydub
+deep-translator
+httpx
+PyJWT
+python-dotenv
+Flask-JWT-Extended

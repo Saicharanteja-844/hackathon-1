@@ -1,0 +1,29 @@
+Steps to Install FFmpeg and Add to System PATH on Windows:
+
+1. Download FFmpeg:
+   - Go to https://ffmpeg.org/download.html
+   - Click on "Windows builds" link.
+   - Choose a build provider like "gyan.dev".
+   - Download the latest "ffmpeg-git-full.7z" or "ffmpeg-release-full.zip".
+
+2. Extract FFmpeg:
+   - Extract the downloaded archive to a folder, e.g., C:\ffmpeg
+
+3. Add FFmpeg to System PATH:
+   - Open Start Menu, search for "Environment Variables", and select "Edit the system environment variables".
+   - In the System Properties window, click "Environment Variables".
+   - Under "System variables", find and select the "Path" variable, then click "Edit".
+   - Click "New" and add the path to the FFmpeg bin folder, e.g., C:\ffmpeg\bin
+   - Click OK on all dialogs to save.
+
+4. Verify Installation:
+   - Open a new Command Prompt window.
+   - Run: ffmpeg -version
+   - Run: ffprobe -version
+   - Both commands should display version info without errors.
+
+5. Restart your IDE or terminal to apply changes.
+
+After completing these steps, the AI-powered accessibility tool's speech-to-text feature should work correctly.
+
+If you need further assistance, please let me know.

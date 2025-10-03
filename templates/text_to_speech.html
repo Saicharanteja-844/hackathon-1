@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h2>Text to Speech</h2>
+    <form method="POST" action="{{ url_for('text_to_speech') }}">
+        <label for="text_input">Enter text to convert to speech:</label><br />
+        <textarea id="text_input" name="text_input" rows="4" cols="50" required></textarea><br /><br />
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if audio_file %}
+    <h3>Audio Output:</h3>
+    <audio controls>
+        <source src="{{ url_for('static', filename=audio_file) }}" type="audio/mpeg" />
+        Your browser does not support the audio element.
+    </audio>
+    {% endif %}
+</section>
+{% endblock %}

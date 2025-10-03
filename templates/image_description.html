@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h2>Image Description</h2>
+    <form method="POST" action="{{ url_for('image_description') }}" enctype="multipart/form-data">
+        <label for="image_file">Upload an image file:</label><br />
+        <input type="file" id="image_file" name="image_file" accept="image/*" required /><br /><br />
+        <div id="image-preview-container" style="margin-bottom: 1rem;">
+            <img id="image-preview" src="#" alt="Image Preview" style="max-width: 100%; max-height: 300px; display: none; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
+        </div>
+        <button type="submit">Generate Description</button>
+    </form>
+
+    {% if description %}
+    <h3>Description:</h3>
+    <p>{{ description }}</p>
+    {% endif %}
+
+    {% if audio_file %}
+    <h3>Audio Description:</h3>
+    <audio controls>
+        <source src="{{ url_for('static', filename=audio_file) }}" type="audio/mpeg" />
+        Your browser does not support the audio element.
+    </audio>
+    {% endif %}
+</section>
+
+<script>
+document.getElementById('image_file').addEventListener('change', function(event) {
+    const preview = document.getElementById('image-preview');
+    const file = event.target.files[0];
+    if (file) {
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
+    } else {
+        preview.src = '#';
+        preview.style.display = 'none';
+    }
+});
+</script>
+{% endblock %}
