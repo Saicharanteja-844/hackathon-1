@@ -24,13 +24,20 @@ def generate_subtitles(video_path):
     except sr.RequestError:
         text = "Could not request results from the speech recognition service"
 
-    subtitle_path = "static/subtitles/subtitles.srt"
+    subtitle_srt_path = "static/subtitles/subtitles.srt"
+    subtitle_txt_path = "static/subtitles/subtitles.txt"
     if not os.path.exists("static/subtitles"):
         os.makedirs("static/subtitles")
-        
-    with open(subtitle_path, "w", encoding="utf-8") as f:
+
+    # Generate SRT format
+    with open(subtitle_srt_path, "w", encoding="utf-8") as f:
         f.write("1\n00:00:00,000 --> 00:00:10,000\n")
         f.write(text + "\n")
 
+    # Generate TXT format with plain text
+    with open(subtitle_txt_path, "w", encoding="utf-8") as f:
+        f.write("Generated Subtitles:\n\n")
+        f.write(text + "\n")
+
     os.remove(audio_path)
-    return subtitle_path
+    return subtitle_txt_path
